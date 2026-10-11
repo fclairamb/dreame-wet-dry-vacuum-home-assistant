@@ -1,5 +1,11 @@
 # Dreame Wet & Dry Dashboard
 
+> **Standalone Dashboard is now maintained and installable via HACS Custom Repositories at**
+> [matanmesika/dreame-device-card](https://github.com/matanmesika/dreame-device-card).
+> This `dashboard-release/` folder is retained as a synchronized development
+> copy for integration testing; do not install the integration repository as a
+> HACS Dashboard. Stable H15 control release remains gated by real-device tests.
+
 **A standalone Home Assistant Lovelace card for supported Dreame wet & dry vacuum entities.**
 
 > **PRE-RELEASE REVIEW — not an official public release.** This folder is a self-contained *candidate* for a future dedicated `dreame-device-card` GitHub repository (HACS category: **Dashboard**). Do **not** register this integration repository as a Dashboard repository in HACS: it is currently an Integration repo. This card is not affiliated with Dreame. Integration branding belongs to the underlying Dreame integration; this standalone dashboard does not ship an integration icon or logo.
