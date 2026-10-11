@@ -12,10 +12,7 @@ dashboard-release/
 │   ├── card.yaml                     # Card configuration
 │   └── dashboard.yaml                # Full Lovelace dashboard view
 ├── docs/
-│   ├── images/
-│   │   ├── operation.svg             # Explicitly illustrative
-│   │   ├── status.svg
-│   │   └── maintenance.svg
+│   ├── CURRENT_UI.md                  # Real iPhone card UI specification
 │   └── standalone-hacs.md             # Publication and manual install
 ├── tests/
 │   └── test_device_card.cjs          # Independent Node.js behavior tests

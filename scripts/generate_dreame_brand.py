@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Build official-format Home Assistant integration branding from source art.
 
 This script modifies only custom_components/dreame_wet_dry_vacuum/brand/.

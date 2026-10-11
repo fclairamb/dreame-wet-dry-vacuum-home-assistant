@@ -40,3 +40,6 @@ repository. Home Assistant 2026.3+ supports these local icons/logos. HACS
 storefront icons may still be absent because of a separate HACS UI issue.
 
 The card does not itself contact cloud services or create new entities.
+
+
+For current UI layout and iPhone behavior see [CURRENT_UI.md](CURRENT_UI.md).

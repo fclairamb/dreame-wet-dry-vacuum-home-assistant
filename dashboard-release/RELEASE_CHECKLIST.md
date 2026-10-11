@@ -2,15 +2,15 @@
 
 - [x] Standalone `dist/dreame-device-card.js` copied unchanged from active development branch
 - [x] Card-specific HACS manifest and root README prepared
-- [x] Three **illustrative** visual previews included and explicitly labeled
+- [x] Outdated/misleading example illustrations removed; accurate UI specification based on owner's actual iPhone card
 - [x] Integration branding kept in the integration's `brand/` directory, omitted from dashboard package
 - [x] English documentation and Hebrew quick start
 - [x] Independent node test path prepared
-- [x] Card-only CI passed for the original preview candidate; rerun after branding changes
+- [ ] Card-only CI passes for the latest real-UI documentation/mobile-scroll candidate
 - [ ] Real Home Assistant browser / iOS layout and scroll tested
 - [ ] H14 and H15 device selection tested on physical installations
 - [ ] Safe commands and all maintenance confirmation flows tested with a real device
-- [ ] Replace illustration previews with consented and redacted real screenshots, if available
+- [ ] Obtain separate explicit permission before publishing a redacted real user screenshot, if desired
 - [ ] Create dedicated public repository named `dreame-device-card` (not supported by current GitHub connector actions)
 - [ ] Copy *contents* of this folder to that repository **root**; do not copy the parent folder
 - [ ] Configure repository description, license, topics and enable Issues

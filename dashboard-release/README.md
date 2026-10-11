@@ -4,8 +4,7 @@
 
 > **PRE-RELEASE REVIEW — not an official public release.** This folder is a self-contained *candidate* for a future dedicated `dreame-device-card` GitHub repository (HACS category: **Dashboard**). Do **not** register this integration repository as a Dashboard repository in HACS: it is currently an Integration repo. This card is not affiliated with Dreame. Integration branding belongs to the underlying Dreame integration; this standalone dashboard does not ship an integration icon or logo.
 
-![Illustrative overview of operation controls](docs/images/operation.svg)
-*Illustrative preview, not a capture of Home Assistant or real device telemetry. Values and layout are examples.*
+**Actual UI:** The card displays the Dreame Wet & Dry header, H15 Pro Heat status and battery/connection badges, a round vacuum illustration, **Operation / Device status / Maintenance** tabs, and expandable setting groups. Its colors and panel surfaces inherit your Home Assistant theme. See [the real-card UI specification](docs/CURRENT_UI.md), based on the owner's iPhone screenshot. The screenshot is intentionally not uploaded publicly.
 
 ## What the dashboard does
 
@@ -19,19 +18,13 @@ The card shows existing Home Assistant entities belonging to the selected Dreame
 
 ### Operation
 
-![Operation illustration](docs/images/operation.svg)
-
 The first tab prioritizes daily operation. Cleaning/wash/dry settings are grouped to avoid a long control panel. Unsupported and unavailable actions are not offered as working capabilities.
 
 ### Device status
 
-![Device status illustration](docs/images/status.svg)
-
-Status is driven by Home Assistant state and the integration's device/entity registry. Battery, progress, and activity are only rendered from data supplied by the installed device integration. The visual style follows Home Assistant light/dark theme variables.
+Status is driven by Home Assistant state and the integration's device/entity registry. Battery, progress, and activity are only rendered from data supplied by the installed device integration. The visual style follows Home Assistant light/dark theme variables. On iPhone/narrow viewports, card content scrolls with the page instead of clipping its final settings inside an internal 340px scroll panel.
 
 ### Maintenance
-
-![Maintenance illustration](docs/images/maintenance.svg)
 
 The maintenance tab covers filter and front roller-brush lifetime, water warnings, and faults. A remaining **percentage** is shown only when a valid device maximum is known. Missing tank-level telemetry is **not** inferred from the absence of an alarm. Reset actions have a confirmation step.
 
@@ -73,7 +66,7 @@ node --test tests/test_device_card.cjs
 - The dashboard implementation is identical to the `www/dreame-device-card.js` file in the source development branch; the test runner was adjusted to target `dist/`.
 - PR checks should pass before promotion.
 - Review model selection, English/Hebrew layouts, the three tabs, iOS scroll handling, service command safety, and the maintenance reset dialog on a running Home Assistant.
-- The `docs/images/*.svg` files are **illustrative previews**, not screenshots of a real system; substitute genuine screenshots after manual acceptance tests.
+- The original schematic SVG images have been removed because they did not match the actual interface. See [docs/CURRENT_UI.md](docs/CURRENT_UI.md) for a faithful layout and explicit separation of the outer dashboard and card. Add a real, redacted screenshot only with explicit publication permission.
 - **Integration branding is not part of this card:** the logo/icon belongs in the installed integration at `custom_components/dreame_wet_dry_vacuum/brand/icon.png` (with `icon@2x.png` for high-density displays). The dashboard release package deliberately omits these brand assets.
 
 ## Privacy, support and contribution
@@ -88,4 +81,4 @@ The card runs within Home Assistant and uses the supplied `hass` state and servi
 
 האייקון והלוגו שייכים לאינטגרציה עצמה, תחת `custom_components/dreame_wet_dry_vacuum/brand/`. חבילת הדשבורד אינה מכילה לוגו נפרד.
 
-**חשוב:** המיפוי של H15 עדיין ניסיוני וחלקו דורש אימות מול מכשיר אמיתי. התמונות לעיל הן המחשה בלבד, ולא צילומי מסך של המערכת. הכרטיס עדיין בשלב הכנה לפרסום ואין לו גרסת Release ציבורית.
+**חשוב:** המיפוי של H15 עדיין ניסיוני וחלקו דורש אימות מול מכשיר אמיתי. הסרנו את תמונות ההמחשה שלא התאימו לממשק האמיתי. תיאור הפריסה המעודכן נמצא בקובץ `docs/CURRENT_UI.md`; צילום המסך האישי לא פורסם ב־GitHub. הכרטיס עדיין בשלב הכנה לפרסום ואין לו גרסת Release ציבורית.

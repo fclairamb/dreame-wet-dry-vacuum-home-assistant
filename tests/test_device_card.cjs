@@ -437,3 +437,18 @@ test('editor changes profile and resets stale manual overrides without device wr
   assert.equal(Object.keys(config.entities).length, 0);
   assert.match(editor.shadowRoot.innerHTML, /Device type/);
 });
+
+
+test('iPhone viewport uses normal HA page scrolling without clipping settings', () => {
+  const widget = card();
+  widget._config = { language: 'en', title: 'H15 Pro Heat' };
+  widget._hass = { states: {}, language: 'en' };
+  widget._render();
+  const output = widget.shadowRoot.innerHTML;
+  assert.match(output, /@media\(max-width:600px\)\{\.panel\{max-height:none;overflow:visible;overscroll-behavior:auto\}\}/);
+  assert.match(output, /role="tablist"/);
+  assert.match(output, /Operation/);
+  assert.match(output, /Device status/);
+  assert.match(output, /Maintenance/);
+  assert.match(output, /DREAME · WET & DRY/);
+});

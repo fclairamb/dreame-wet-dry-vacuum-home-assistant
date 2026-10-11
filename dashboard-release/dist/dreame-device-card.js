@@ -708,6 +708,9 @@ const DREAME_STYLES = `
   .consumable{padding:4px 10px 10px;border-radius:12px;margin-bottom:10px}.notice,.confirmation,.alert{font-size:12px;padding:10px}.muted,small{font-size:11px}footer{margin-top:10px;font-size:9px}
   @media(max-width:380px){ha-card{padding:12px}.row{gap:8px}.input{flex-basis:54%}.hero{height:72px;flex-basis:54px}.metric strong{font-size:12px}}
   .panel{max-height:340px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;-webkit-overflow-scrolling:touch;overflow-anchor:none}
+  /* Mobile uses Home Assistant's page scrolling: never trap or clip the bottom
+     settings rows and footer behind a 340px nested scroll region on iPhone. */
+  @media(max-width:600px){.panel{max-height:none;overflow:visible;overscroll-behavior:auto}}
   .setting-group{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;background:transparent;text-align:start;border:0;border-bottom:1px solid var(--divider-color);border-radius:0;padding:12px 2px;font-size:12px}
   .setting-group strong{font-weight:500}.setting-group small{display:block;font-size:10px;margin-top:4px;color:var(--secondary-text-color)}.setting-group ha-icon{--mdc-icon-size:18px;color:var(--secondary-text-color)}
   .setting-value{display:flex;align-items:center;justify-content:space-between;gap:6px;width:100%;font-size:11px;padding:7px;text-align:start;overflow-wrap:anywhere}.setting-value ha-icon{--mdc-icon-size:16px;flex-shrink:0}
