@@ -6,7 +6,7 @@
 - [x] Integration branding kept in the integration's `brand/` directory, omitted from dashboard package
 - [x] English documentation and Hebrew quick start
 - [x] Independent node test path prepared
-- [ ] Card-only CI passes for the latest real-UI documentation/mobile-scroll candidate
+- [x] Card-only CI passed for the screenshot-aligned, mobile-scroll candidate ([successful workflow](https://github.com/matanmesika/dreame-wet-dry-vacuum-home-assistant/actions/runs/38123700540))
 - [ ] Real Home Assistant browser / iOS layout and scroll tested
 - [ ] H14 and H15 device selection tested on physical installations
 - [ ] Safe commands and all maintenance confirmation flows tested with a real device
