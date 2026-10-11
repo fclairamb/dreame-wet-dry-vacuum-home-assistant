@@ -3,7 +3,7 @@
 - [x] Standalone `dist/dreame-device-card.js` copied unchanged from active development branch
 - [x] Card-specific HACS manifest and root README prepared
 - [x] Three **illustrative** visual previews included and explicitly labeled
-- [x] Existing Dreame icon and retina icon included in root and documentation; preview ZIP includes both
+- [x] Integration branding kept in the integration's `brand/` directory, omitted from dashboard package
 - [x] English documentation and Hebrew quick start
 - [x] Independent node test path prepared
 - [ ] Card-only CI passes for the committed candidate

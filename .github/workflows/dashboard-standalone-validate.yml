@@ -31,13 +31,15 @@ jobs:
         run: |
           node -e "const fs=require('fs'),p=JSON.parse(fs.readFileSync('dashboard-release/hacs.json')); if(p.filename!=='dreame-device-card.js'||!p.name) process.exit(1)"
           for asset in dashboard-release/docs/images/*.svg; do grep -q 'ILLUSTRATIVE PREVIEW' "$asset"; done
-          test -s dashboard-release/icon.png
-          test -s dashboard-release/icon@2x.png
-          test -s dashboard-release/docs/images/dreame-icon.png
+          test -s custom_components/dreame_wet_dry_vacuum/brand/icon.png
+          test -s custom_components/dreame_wet_dry_vacuum/brand/icon@2x.png
+          test ! -e dashboard-release/icon.png
+          test ! -e dashboard-release/icon@2x.png
+          test ! -e dashboard-release/docs/images/dreame-icon.png
       - name: Package a review-only preview (not a release)
         run: |
           cd dashboard-release
-          zip -r ../dreame-dashboard-preview.zip README.md CHANGELOG.md RELEASE_CHECKLIST.md LICENSE hacs.json info.md icon.png icon@2x.png dist docs examples tests
+          zip -r ../dreame-dashboard-preview.zip README.md CHANGELOG.md RELEASE_CHECKLIST.md LICENSE hacs.json info.md dist docs examples tests
       - uses: actions/upload-artifact@v4
         with:
           name: dreame-dashboard-preview-${{ github.sha }}

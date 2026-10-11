@@ -1,10 +1,8 @@
 # Dreame Wet & Dry Dashboard
 
-![Dreame icon — existing brand asset](docs/images/dreame-icon.png)
-
 **A standalone Home Assistant Lovelace card for supported Dreame wet & dry vacuum entities.**
 
-> **PRE-RELEASE REVIEW — not an official public release.** This folder is a self-contained *candidate* for a future dedicated `dreame-device-card` GitHub repository (HACS category: **Dashboard**). Do **not** register this integration repository as a Dashboard repository in HACS: it is currently an Integration repo. This card is not affiliated with Dreame. Its visual brand icon reuses the existing icon shipped with this project's integration; the Dreame name and marks remain the property of their respective owners.
+> **PRE-RELEASE REVIEW — not an official public release.** This folder is a self-contained *candidate* for a future dedicated `dreame-device-card` GitHub repository (HACS category: **Dashboard**). Do **not** register this integration repository as a Dashboard repository in HACS: it is currently an Integration repo. This card is not affiliated with Dreame. Integration branding belongs to the underlying Dreame integration; this standalone dashboard does not ship an integration icon or logo.
 
 ![Illustrative overview of operation controls](docs/images/operation.svg)
 *Illustrative preview, not a capture of Home Assistant or real device telemetry. Values and layout are examples.*
@@ -76,7 +74,7 @@ node --test tests/test_device_card.cjs
 - PR checks should pass before promotion.
 - Review model selection, English/Hebrew layouts, the three tabs, iOS scroll handling, service command safety, and the maintenance reset dialog on a running Home Assistant.
 - The `docs/images/*.svg` files are **illustrative previews**, not screenshots of a real system; substitute genuine screenshots after manual acceptance tests.
-- The original Dreame icon is included as `icon.png`, `icon@2x.png` and in the README. Unlike the illustrated previews, this icon comes directly from the existing integration assets.
+- **Integration branding is not part of this card:** the logo/icon belongs in the installed integration at `custom_components/dreame_wet_dry_vacuum/brand/icon.png` (with `icon@2x.png` for high-density displays). The dashboard release package deliberately omits these brand assets.
 
 ## Privacy, support and contribution
 
@@ -88,6 +86,6 @@ The card runs within Home Assistant and uses the supplied `hass` state and servi
 
 זהו כרטיס דשבורד ל־Home Assistant המיועד למכשירי Dreame Wet & Dry נתמכים, עם **שלוש לשוניות: תפעול, מצב המכשיר ותחזוקה**. הכרטיס משתמש בישויות האמיתיות של האינטגרציה; הוא אינו ממציא חיישנים ואינו משנה את מיפויי המכשיר. ניתן לבחור `language: he`, ואת דגם H14 או H15 בעורך.
 
-האייקון של Dreame מצורף לחבילה בגודל רגיל וברזולוציה כפולה, ומשולב גם בתיאור הפרויקט.
+האייקון והלוגו שייכים לאינטגרציה עצמה, תחת `custom_components/dreame_wet_dry_vacuum/brand/`. חבילת הדשבורד אינה מכילה לוגו נפרד.
 
 **חשוב:** המיפוי של H15 עדיין ניסיוני וחלקו דורש אימות מול מכשיר אמיתי. התמונות לעיל הן המחשה בלבד, ולא צילומי מסך של המערכת. הכרטיס עדיין בשלב הכנה לפרסום ואין לו גרסת Release ציבורית.
