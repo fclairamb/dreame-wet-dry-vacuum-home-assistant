@@ -10,6 +10,21 @@ It connects to the Dreame cloud, authenticates with your Dreame account, and exp
 
 ---
 
+## Integration branding (Home Assistant 2026.3+)
+
+The integration installs its **own Dreame icon and wordmark** in
+`custom_components/dreame_wet_dry_vacuum/brand/`: `icon.png` (256×256),
+`icon@2x.png` (512×512), `logo.png` and `logo@2x.png`.
+These are **integration assets**, not part of the Lovelace dashboard.
+For provenance and reproducibility see [branding source](assets/branding/README.md).
+
+After installing/reloading the integration in Home Assistant 2026.3+,
+the icon is supplied locally through Home Assistant's brand image API.
+A separate issue in the HACS frontend may still display
+“Icon not available” on the **HACS download listing** even while the
+integration's icon appears correctly in Devices & Services:
+[hacs/integration#5402](https://github.com/hacs/integration/issues/5402).
+
 ## Features
 
 This is a *wet & dry stick* vacuum (not a robot), so there is **no `vacuum` entity**. Instead the integration exposes the device through standard entity platforms:
