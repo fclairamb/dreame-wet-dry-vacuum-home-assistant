@@ -13,6 +13,7 @@ import aiohttp
 from Crypto.Cipher import AES
 
 from .const import (
+    CN_BASE_URL,
     DREAME_BASIC_AUTH,
     DREAME_IOT_PREFIX,
     DREAME_PASSWORD_SALT,
@@ -20,7 +21,6 @@ from .const import (
     DREAME_TENANT_ID,
     ENDPOINTS,
     EU_BASE_URL,
-    CN_BASE_URL,
 )
 
 _LOGGER = logging.getLogger(__name__)
