@@ -1,6 +1,15 @@
 # Dreame Wet & Dry Vacuum — Home Assistant integration
 
-[![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://github.com/hacs/integration)
+## Install manually through HACS
+
+[![Add Dreame Wet & Dry Vacuum to HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=matanmesika&repository=dreame-wet-dry-vacuum-home-assistant&category=integration)
+
+**[Open HACS custom repository shortcut](https://my.home-assistant.io/redirect/hacs_repository/?owner=matanmesika&repository=dreame-wet-dry-vacuum-home-assistant&category=integration)** · [GitHub repository](https://github.com/matanmesika/dreame-wet-dry-vacuum-home-assistant)
+
+If the shortcut does not open: open **HACS → ⋮ → Custom repositories**, enter `https://github.com/matanmesika/dreame-wet-dry-vacuum-home-assistant`, choose **Integration**, then **Add** and **Download**. Restart Home Assistant, then open **Settings → Devices & services → Add integration → Dreame Wet & Dry Vacuum**. This is a custom repository, not a default HACS catalog listing.
+
+**Fork notice:** This repository is a fork of [morcus/dreame-wet-dry-vacuum-home-assistant](https://github.com/morcus/dreame-wet-dry-vacuum-home-assistant). Select only one source of the integration in HACS to avoid duplicate installations. H14 is the originally tested device; H15 functionality requires hardware validation.
+
 
 A custom [Home Assistant](https://www.home-assistant.io/) integration for **Dreame wet & dry stick vacuums**, developed and tested against the **Dreame H14 Pro** (`dreame.hold.w2306e`).
 
@@ -80,7 +89,7 @@ Python dependencies (`pycryptodome`, `paho-mqtt`) are installed automatically by
 1. Make sure [HACS](https://hacs.xyz/) is installed.
 2. In Home Assistant go to **HACS → Integrations → ⋮ (top-right) → Custom repositories**.
 3. Add this repository:
-   - **Repository:** `https://github.com/morcus/dreame-wet-dry-vacuum-home-assistant`
+   - **Repository:** `https://github.com/matanmesika/dreame-wet-dry-vacuum-home-assistant`
    - **Category:** `Integration`
 4. Find **Dreame Wet & Dry Vacuum** in the HACS list and click **Download**.
 5. **Restart Home Assistant.**
