@@ -1,6 +1,6 @@
 """Regression guard: Home Assistant 2026.3+ local brand icons ship with integration."""
-from pathlib import Path
 import struct
+from pathlib import Path
 
 BRAND = Path(__file__).resolve().parents[1] / "custom_components" / "dreame_wet_dry_vacuum" / "brand"
 
