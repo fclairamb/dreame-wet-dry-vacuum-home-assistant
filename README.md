@@ -1,5 +1,11 @@
 # Dreame Wet & Dry Vacuum — Home Assistant integration
 
+## Integration icon troubleshooting (Home Assistant / HACS)
+
+The integration **ships its own icon** in `custom_components/dreame_wet_dry_vacuum/brand/icon.png` and `icon@2x.png`, alongside `logo.png`. These files must remain in the installed integration folder; do not copy them into the Lovelace card or use the card's icon as a substitute. Home Assistant **2026.3 or newer** supports local integration brand images without a separate brands-repository submission.
+
+After installing/updating this repository through HACS, **restart Home Assistant** and check **Settings → Devices & services** for the integration icon. To troubleshoot a missing icon, confirm that `/config/custom_components/dreame_wet_dry_vacuum/brand/icon.png` exists. In Home Assistant 2026.3+, the authenticated brand image endpoint is `/api/brands/integration/dreame_wet_dry_vacuum/icon.png` (requires authentication; `?placeholder=no` avoids a misleading placeholder). A missing icon **only in the HACS download listing** may be the [known HACS frontend issue](https://github.com/hacs/integration/issues/5402), even when Home Assistant displays the integration icon correctly. Do not interpret the HACS placeholder as proof that the integration's icon was deleted.
+
 ## Install manually through HACS
 
 [![Add Dreame Wet & Dry Vacuum to HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=matanmesika&repository=dreame-wet-dry-vacuum-home-assistant&category=integration)
