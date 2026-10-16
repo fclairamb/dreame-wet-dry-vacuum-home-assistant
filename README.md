@@ -1,5 +1,11 @@
 # Dreame Wet & Dry Vacuum — Home Assistant integration
 
+<img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Logo_of_Dreame.svg" alt="Dreame current corporate wordmark (2023)" width="280">
+
+**Official visual identity:** Dreame introduced this black uppercase wordmark with a gold smile curve in the A at IFA 2023. [Dreame's announcement](https://www.prnewswire.com/news-releases/dreame-unveils-upgraded-brand-identity-at-ifa-2023-reflective-of-enriched-customer-experience-301911151.html) · [SVG and attribution (Wikimedia Commons)](https://commons.wikimedia.org/wiki/File:Logo_of_Dreame.svg) ([CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), as listed there). Dreame owns its brand and trademarks. This community integration is unofficial.
+
+The image above documents the **current company logo**, not the older local Home Assistant integration icon. This documentation change does not change the installed integration's icon/logo image files or device functionality.
+
 ## Integration icon troubleshooting (Home Assistant / HACS)
 
 The integration **ships its own icon** in `custom_components/dreame_wet_dry_vacuum/brand/icon.png` and `icon@2x.png`, alongside `logo.png`. These files must remain in the installed integration folder; do not copy them into the Lovelace card or use the card's icon as a substitute. Home Assistant **2026.3 or newer** supports local integration brand images without a separate brands-repository submission.
@@ -135,13 +141,13 @@ For reference, here is the checklist HACS uses to validate a custom **integratio
 | `README.md` in repository root | ✅ | this file (`render_readme: true`) |
 | `LICENSE` in repository root | ✅ | The Unlicense (public domain) |
 | CI validation (HACS Action + hassfest) | ✅ | `.github/workflows/validate.yml` |
-| Brand assets (`brand/icon.png`) | ✅ | local **placeholder** icon — see note below |
+| Brand assets (`brand/icon.png`) | ✅ | local legacy Dreame D artwork — see note below |
 | Repository is **public** on GitHub | ✅ | set to *Public* |
 | GitHub repository **description** is set | ✅ | set in the repo's *About* section |
 | GitHub repository **topics** | ✅ | `home-assistant`, `hacs`, `dreame`, `vacuum`, … |
 | At least one **release / tag** | ✅ | [`v0.1.0`](https://github.com/morcus/dreame-wet-dry-vacuum-home-assistant/releases/tag/v0.1.0) |
 
-> **Brand icon note:** `custom_components/dreame_wet_dry_vacuum/brand/icon.png` is a neutral, generated **placeholder** (a generic water-drop glyph) so the HACS *brands* check passes. It is **not** the Dreame logo. Replace it with a logo you have the rights to use, or — the recommended route — register the integration in the [home-assistant/brands](https://github.com/home-assistant/brands) repository, which both Home Assistant and HACS pick up automatically.
+> **Brand icon note:** The currently bundled icon and logo were generated from an older purple **Dreame** vector wordmark, as documented in [`assets/branding/README.md`](assets/branding/README.md). They are not the newer 2023 black-and-gold corporate logo shown at the top of this README. The local files are intentionally unchanged by this documentation update. Replacing them should be a separate branding-asset change with license review and Home Assistant verification.
 
 ### Optional: getting into the default HACS store
 
