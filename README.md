@@ -17,7 +17,7 @@ This community project is not affiliated with or supported by Dreame. It uses un
 - H15 wash/dry and cleaning settings where the command path is known, with raw values retained for diagnosis when interpretation is not verified.
 - A Lovelace dashboard card with operation, device status, maintenance, theme-aware colors, and manually selectable entities.
 
-Availability depends on the model, firmware, installed accessories, and the values reported by Dreame. A field documented as plugin-derived or candidate is not the same as a confirmed device mapping. Consult [H15_MAPPING.md](H15_MAPPING.md) before using H15 settings. Some writes require physical verification and the device may not confirm a command.
+Availability depends on the model, firmware, installed accessories, and the values reported by Dreame. A field documented as plugin-derived or candidate is not the same as a confirmed device mapping. Consult [H15_MAPPING.md](H15_MAPPING.md) before using H15 settings. Some writes require physical verification and the device may not confirm a command. On H15, a setting is only created when the unit reports its property; the same goes for a consumable percentage, which needs the maximum life. Entities left over from earlier versions for unreported properties are removed at startup.
 
 ## Requirements
 

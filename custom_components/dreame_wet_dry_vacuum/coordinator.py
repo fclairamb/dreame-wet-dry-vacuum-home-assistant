@@ -99,6 +99,8 @@ class DreameWetDryCoordinator(DataUpdateCoordinator[dict[str, Any]]):
         self._is_h15 = is_h15_pro_heat(self._model)
         self._h15_discovery_done = False
         self._h15_poll_keys: list[str] = []
+        # True when the last full H15 scan read every cloud chunk.
+        self.h15_scan_complete = False
 
         self._h15_mapping_snapshot: dict[str, Any] = {}
         self._h15_last_changes: dict[str, dict[str, Any]] = {}
@@ -124,6 +126,13 @@ class DreameWetDryCoordinator(DataUpdateCoordinator[dict[str, Any]]):
     def h15_last_scan(self) -> datetime | None:
         """Return timestamp of the last manual/initial H15 mapping scan."""
         return self._h15_last_scan
+
+    def reports(self, key: tuple[int, int] | str) -> bool:
+        """Return whether the unit reports a usable value for this property."""
+        if isinstance(key, str):  # "siid.piid", as in CONSUMABLE_SENSORS
+            siid, piid = key.split(".")
+            key = (int(siid), int(piid))
+        return self.props.get(key) not in (None, -1, "-1")
 
     @callback
     def start_polling(self) -> None:
@@ -338,6 +347,7 @@ class DreameWetDryCoordinator(DataUpdateCoordinator[dict[str, Any]]):
         keys: list[str],
         *,
         chunk_size: int = _H15_DISCOVERY_CHUNK,
+        failed: list[list[str]] | None = None,
     ) -> dict[str, Any]:
         """Read cloud-cached status properties in bounded chunks."""
         result: dict[str, Any] = {}
@@ -349,6 +359,8 @@ class DreameWetDryCoordinator(DataUpdateCoordinator[dict[str, Any]]):
                 raise
             except (DreameAPIError, ValueError) as err:
                 _LOGGER.debug("status_props chunk failed (non-fatal): %s", err)
+                if failed is not None:
+                    failed.append(chunk)
                 continue
             if isinstance(values, dict):
                 result.update(values)
@@ -390,7 +402,9 @@ class DreameWetDryCoordinator(DataUpdateCoordinator[dict[str, Any]]):
 
     async def _read_full_h15_profile(self) -> dict[str, Any]:
         """Read the expanded H15 profile from cache plus targeted live RPC."""
-        cached = await self._get_status_props_chunked(self._all_h15_scan_keys())
+        failed: list[list[str]] = []
+        cached = await self._get_status_props_chunked(self._all_h15_scan_keys(), failed=failed)
+        self.h15_scan_complete = not failed
         usable = {key: value for key, value in cached.items() if value is not None}
 
         # Prefer a successful live value over an older cached value.

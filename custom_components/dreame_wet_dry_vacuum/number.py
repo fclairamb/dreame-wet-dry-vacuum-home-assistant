@@ -21,7 +21,7 @@ async def async_setup_entry(
 ) -> None:
     coordinator = entry.runtime_data
     if coordinator.is_h15_pro_heat:
-        async_add_entities(DreameH15Number(coordinator, key) for key in H15_NUMBER_SETTINGS)
+        async_add_entities(DreameH15Number(coordinator, key) for key in H15_NUMBER_SETTINGS if coordinator.reports(key))
         return
 
     async_add_entities(

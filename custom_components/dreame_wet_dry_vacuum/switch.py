@@ -25,10 +25,11 @@ async def async_setup_entry(
 ) -> None:
     coordinator = entry.runtime_data
     if coordinator.is_h15_pro_heat:
+        # Skip settings this unit never reports: they would stay unknown.
         async_add_entities([
-            *(DreameH15Switch(coordinator, key) for key in H15_SWITCH_SETTINGS),
-            *(DreameH15Switch(coordinator, (24, 1), arm_bit=bit) for bit in H15_ARM_MODES),
-            *(DreameWetDryScheduleDaySwitch(coordinator, day) for day in H15_SCHEDULE_DAYS),
+            *(DreameH15Switch(coordinator, key) for key in H15_SWITCH_SETTINGS if coordinator.reports(key)),
+            *(DreameH15Switch(coordinator, (24, 1), arm_bit=bit) for bit in H15_ARM_MODES if coordinator.reports((24, 1))),
+            *(DreameWetDryScheduleDaySwitch(coordinator, day) for day in H15_SCHEDULE_DAYS if coordinator.reports((1, 77))),
         ])
         return
 

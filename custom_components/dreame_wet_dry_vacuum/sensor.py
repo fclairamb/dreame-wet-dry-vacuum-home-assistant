@@ -125,7 +125,9 @@ def _setup_h15_sensors(
                         *(DreameWetDryConsumableSensor(coordinator, meta, percentage=percentage)
                           for meta in CONSUMABLE_SENSORS
                           if meta["key"] != "back_brush" or coordinator.props.get((7, 7), -1) >= 0
-                          for percentage in (False, True))])
+                          # A percentage needs the maximum life reported by the unit.
+                          for percentage in (False, True)
+                          if not percentage or coordinator.reports(meta["max"]))])
 
     _LOGGER.info(
         "Created %d H15 Pro Heat property sensors for model=%s",

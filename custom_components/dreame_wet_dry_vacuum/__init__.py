@@ -15,6 +15,7 @@ from .const import (
     CONF_COUNTRY,
     CONF_DEVICE_ID,
     CONF_REGION,
+    CONSUMABLE_SENSORS,
     H15_ALERT_BINARY_SENSORS,
     H15_CONTROL_KEYS,
     H15_PRIMARY_ALERT_KEYS,
@@ -198,6 +199,28 @@ async def async_setup_entry(hass: HomeAssistant, entry: DreameWetDryConfigEntry)
             if optional and entity_entry.disabled_by is None:
                 registry.async_update_entity(entity_entry.entity_id, disabled_by=er.RegistryEntryDisabler.INTEGRATION)
         hass.config_entries.async_update_entry(entry, data={**entry.data, "_h15_layout_schema": 2})
+
+    # The platforms skip settings and percentages this unit never reports.
+    # Remove the ones earlier versions registered, so they do not linger as
+    # unavailable. Only after a complete scan: a failed cloud chunk must not
+    # drop working controls. They come back if the unit reports them later.
+    if coordinator.is_h15_pro_heat and coordinator.h15_scan_complete:
+        registry = er.async_get(hass)
+        setting_prefix = f"{coordinator.device_id}_h15_setting_"
+        unreported_percentages = {
+            f"{coordinator.device_id}_consumable_{meta['key']}_percent"
+            for meta in CONSUMABLE_SENSORS
+            if not coordinator.reports(meta["max"])
+        }
+        for entity_entry in er.async_entries_for_config_entry(registry, entry.entry_id):
+            unique_id = entity_entry.unique_id
+            if unique_id.startswith(setting_prefix):
+                siid, piid = unique_id[len(setting_prefix):].split("_")[:2]
+                unreported = not coordinator.reports((int(siid), int(piid)))
+            else:
+                unreported = unique_id in unreported_percentages
+            if unreported:
+                registry.async_remove(entity_entry.entity_id)
 
     entry.runtime_data = coordinator
     coordinator.start_polling()
